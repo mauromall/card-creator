@@ -1,4 +1,4 @@
-# lab_10
+# lab_10 active on https://lab10-4d325.firebaseapp.com/
 
 ## Project setup
 ```
@@ -27,3 +27,4 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+"# lab-10-mauromall" 
