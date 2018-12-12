@@ -3,8 +3,8 @@
         <div class="grid">
             <form class="card-form">
                 <div class="labels">
-                    <label for="id">Card ID <input id="id" v-model="id"></label>
-                    <label for="name">Card Name <input id="name" v-model="name"></label>
+                    <label for="id">Card ID <input id="id" v-model="id" required></label>
+                    <label for="name">Card Name <input id="name" v-model="name" required></label>
                     <label for="image">Image URL <input id="image" v-model="imageUrl"></label>
                     <label for="fas">Font Awesome Symbol <input id="fas" v-model="fas"></label>
                     <label for="flavorText">Descriptive Text <input id="flavorText" v-model="flavorText"></label>
@@ -51,7 +51,7 @@
                             imageUrl: this.imageUrl,
                         });
                     /**
-                    this.inventory.push({
+                     this.inventory.push({
                         id: this.id,
                         name: this.name,
                         fas: this.fas,
@@ -67,37 +67,67 @@
                     this.flavorText = "";
                     this.color = "";
                 }
-
             }
         }
     }
 </script>
 
 <style>
-    .card-form {
+
+    .grid {
+        height: 93vh;
+        display: grid;
+        grid-template-rows: .4fr 1fr;
+        grid-template-columns: 1fr;
+        background-color: aliceblue;
+    }
+
+    .labels {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-left: 1rem;
-        padding: 0;
     }
 
-    .grid {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+    #fas {
+        max-width: 6rem;
     }
 
-    .labels {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-gap: 2rem;
-        margin: 0;
+    .card-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: .5rem;
+        background-color: aliceblue;
     }
 
-    .grid {
-        height: 90vh;
+    @media screen and (min-width: 768px) {
+        .grid {
+            grid-template-rows: 1fr;
+            grid-template-columns: 1fr 1fr;
+            height: 90vh;
+        }
+
+        .card-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1rem;
+            padding: 0;
+        }
+
+        .labels {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-gap: 2rem;
+            margin: 0;
+        }
+    }
+
+    input:required:invalid {
+        background-color: crimson;
     }
 </style>

@@ -6,15 +6,15 @@
             </div>
             <CardForm @save-card="saveCard"></CardForm>
         </div>
-        <div v-show="ok" class="card-save">
+        <div v-show="ok">
             <div class="button-header">
                 <button @click="toCardCreator" class="saved-cards">Switch To Card Creator</button>
             </div>
 
-            <h1>Saved Card</h1>
+            <h1 class="card-save">Saved Cards</h1>
 
             <div class="saved-section">
-                <div class="card-preview" :style="{backgroundColor: card.color}">
+                <div class="card-preview" v-for="card in inventory" :style="{backgroundColor: card.color}" :key="card.id">
                     <img class="image" :src="card.imageUrl" :alt="card.name">
                     <div class="under-image">
                         <div class="heading">
@@ -43,11 +43,10 @@
 
     export default {
         name: 'app',
-        data:
-
-            function () {
+        data: function () {
                 return {
                     ok: false,
+                    inventory: [],
                     card: {
                         id: '',
                         imageUrl: '',
@@ -63,7 +62,7 @@
         },
         methods: {
             saveCard: function (card) {
-                this.card = card;
+                this.inventory.push(card);
             },
             toCardCreator: function () {
                 this.ok = false;
@@ -84,13 +83,6 @@
     * {
         margin: 0;
         padding: 0;
-    }
-
-    .container {
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-columns: 1fr;
-        background-color: aliceblue;
     }
 
     /* styles for labels */
@@ -124,8 +116,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-bottom: .3rem;
         width: 100vw;
+        height: 3rem;
     }
 
     h1 {
@@ -156,7 +148,42 @@
         height: 3rem;
     }
 
-    .image{
+    .image {
+        width: 20rem;
+        max-height: 50vh;
+    }
+
+    .fas {
+        font-size: 2rem;
+        text-shadow: .1rem .2rem slategray, 0 0 .9rem gray;
+    }
+
+    .under-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    .heading {
+        font-family: 'Capriola', sans-serif;
+        color: gray;
+    }
+
+    .name {
+        font-family: 'Modak', cursive;
+        font-size: 1.5rem;
+        color: gray;
+    }
+
+    .description {
+        font-family: 'Capriola', sans-serif;
+        color: gray;
+    }
+
+    /*
+    .image {
         height: 60vh;
         width: 30vw;
     }
@@ -188,5 +215,86 @@
     .description {
         font-family: 'Capriola', sans-serif;
         color: gray;
+    }
+    */
+
+    .saved-section {
+        display: grid;
+        grid-gap: .5rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        .saved-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto;
+        }
+
+        .container {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: 1fr;
+            background-color: aliceblue;
+            height: 100vh;
+        }
+
+        .button-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: .3rem;
+            width: 100vw;
+            height: auto;
+        }
+
+        .card-preview {
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            max-width: 30vw;
+        }
+
+        .image {
+            height: 60vh;
+            width: 30vw;
+        }
+
+        .fas {
+            font-size: 3rem;
+            text-shadow: .1rem .2rem slategray, 0 0 .9rem gray;
+        }
+
+        .under-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 8rem;
+        }
+
+        .heading {
+            font-family: 'Capriola', sans-serif;
+            color: gray;
+        }
+
+        .name {
+            font-family: 'Modak', cursive;
+            font-size: 2rem;
+            color: gray;
+        }
+
+        .description {
+            font-family: 'Capriola', sans-serif;
+            color: gray;
+        }
+
     }
 </style>
