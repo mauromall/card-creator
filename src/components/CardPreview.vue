@@ -68,7 +68,7 @@
         background-color: aliceblue;
     }
 
-    .image{
+    .image {
         height: 60vh;
         width: 30vw;
     }
@@ -83,7 +83,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 15vh;
+        height: 8rem;
     }
 
     .heading {

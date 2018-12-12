@@ -3,16 +3,17 @@
         <div class="grid">
             <form class="card-form">
                 <div class="labels">
-                    <label for="id">ID <input id="id" v-model="id"></label>
-                    <label for="name">name <input id="name" v-model="name"></label>
-                    <label for="image">Image <input id="image" v-model="imageUrl"></label>
+                    <label for="id">Card ID <input id="id" v-model="id"></label>
+                    <label for="name">Card Name <input id="name" v-model="name"></label>
+                    <label for="image">Image URL <input id="image" v-model="imageUrl"></label>
                     <label for="fas">Font Awesome Symbol <input id="fas" v-model="fas"></label>
                     <label for="flavorText">Descriptive Text <input id="flavorText" v-model="flavorText"></label>
-                    <label for="color">Color <input id="color" v-model="color"></label>
+                    <label for="color">Card Color <input id="color" v-model="color"></label>
                 </div>
                 <button @click.prevent="saveClicked">Save</button>
             </form>
-            <CardPreview :flavor-text="flavorText" :id="id" :image-url="imageUrl" :name="name" :fas="fas" :color="color"/>
+            <CardPreview :flavor-text="flavorText" :id="id" :image-url="imageUrl" :name="name" :fas="fas"
+                         :color="color"/>
         </div>
     </div>
 </template>
@@ -35,11 +36,11 @@
         },
         methods: {
             saveClicked: function () {
-                if(!this.name) {
+                if (!this.name) {
                     alert('Please enter a card name.');
-                } else if(!this.id) {
+                } else if (!this.id) {
                     alert('Please enter a card ID.');
-                } else{
+                } else {
                     this.$emit('save-card',
                         {
                             id: this.id,
@@ -47,8 +48,18 @@
                             fas: this.fas,
                             flavorText: this.flavorText,
                             color: this.color,
-                            imageUrl: this.imageUrl
+                            imageUrl: this.imageUrl,
                         });
+                    /**
+                    this.inventory.push({
+                        id: this.id,
+                        name: this.name,
+                        fas: this.fas,
+                        flavorText: this.flavorText,
+                        color: this.color,
+                        imageUrl: this.imageUrl
+                    });
+                     */
                     this.id = "";
                     this.name = "";
                     this.imageUrl = "";
@@ -56,6 +67,7 @@
                     this.flavorText = "";
                     this.color = "";
                 }
+
             }
         }
     }
@@ -70,16 +82,22 @@
         margin-left: 1rem;
         padding: 0;
     }
+
     .grid {
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
     }
+
     .labels {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         grid-gap: 2rem;
         margin: 0;
+    }
+
+    .grid {
+        height: 90vh;
     }
 </style>
