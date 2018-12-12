@@ -3,7 +3,7 @@
         <div class="grid">
             <form class="card-form">
                 <div class="labels">
-                    <label for="id">Card ID <input id="id" v-model="id" required></label>
+                    <label for="userCardId">Card ID <input id="userCardId" v-model="userCardId" required></label>
                     <label for="name">Card Name <input id="name" v-model="name" required></label>
                     <label for="image">Image URL <input id="image" v-model="imageUrl"></label>
                     <label for="fas">Font Awesome Symbol <input id="fas" v-model="fas"></label>
@@ -12,7 +12,7 @@
                 </div>
                 <button @click.prevent="saveClicked">Save</button>
             </form>
-            <CardPreview :flavor-text="flavorText" :id="id" :image-url="imageUrl" :name="name" :fas="fas"
+            <CardPreview :flavor-text="flavorText" :userCardId="userCardId" :image-url="imageUrl" :name="name" :fas="fas"
                          :color="color"/>
         </div>
     </div>
@@ -26,7 +26,7 @@
         components: {CardPreview},
         data: function () {
             return {
-                id: '0123456789XYZ',
+                userCardId: '0123456789XYZ',
                 imageUrl: 'https://preview.ibb.co/fMkie9/card1.png',
                 name: 'Pink Duck',
                 fas: 'fas fa-cookie',
@@ -38,12 +38,12 @@
             saveClicked: function () {
                 if (!this.name) {
                     alert('Please enter a card name.');
-                } else if (!this.id) {
+                } else if (!this.userCardId) {
                     alert('Please enter a card ID.');
                 } else {
                     this.$emit('save-card',
                         {
-                            id: this.id,
+                            userCardId: this.userCardId,
                             name: this.name,
                             fas: this.fas,
                             flavorText: this.flavorText,
@@ -60,7 +60,7 @@
                         imageUrl: this.imageUrl
                     });
                      */
-                    this.id = "";
+                    this.userCardId = "";
                     this.name = "";
                     this.imageUrl = "";
                     this.fas = "";

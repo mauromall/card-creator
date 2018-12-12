@@ -8,7 +8,7 @@
                     <i :class="fas" :style="{color: color}" class="fas"></i>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{id}}
+                    {{userCardId}}
                 </div>
                 <div class="name">
                     {{name}}
@@ -27,7 +27,7 @@
             flavorText: {
                 type: String
             },
-            id: {
+            userCardId: {
                 type: String
             },
             imageUrl: {
